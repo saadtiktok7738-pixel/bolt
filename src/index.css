@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-border: var(--border);
+  --color-input: var(--border2);
+  --color-ring: var(--purpleL);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--text);
+  --color-card-border: var(--border);
+
+  --color-popover: var(--card);
+  --color-popover-foreground: var(--text);
+  --color-popover-border: var(--border);
+
+  --color-primary: var(--purple);
+  --color-primary-foreground: #ffffff;
+  --color-primary-border: var(--purple2);
+
+  --color-secondary: var(--bg2);
+  --color-secondary-foreground: var(--text);
+  --color-secondary-border: var(--border);
+
+  --color-muted: var(--bg3);
+  --color-muted-foreground: var(--text2);
+  --color-muted-border: var(--border2);
+
+  --color-accent: var(--yellow);
+  --color-accent-foreground: #111111;
+  --color-accent-border: var(--yellow2);
+
+  --color-destructive: var(--red);
+  --color-destructive-foreground: #ffffff;
+  --color-destructive-border: #fca5a5;
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--text);
+  --color-sidebar-border: var(--border);
+  --color-sidebar-primary: var(--purple);
+  --color-sidebar-primary-foreground: #ffffff;
+  --color-sidebar-primary-border: var(--purple2);
+  --color-sidebar-accent: var(--bg2);
+  --color-sidebar-accent-foreground: var(--text);
+  --color-sidebar-accent-border: var(--border);
+  --color-sidebar-ring: var(--purpleL);
+
+  --font-sans: 'Inter', sans-serif;
+}
+
+:root {
+  --bg: #0d0d1a;
+  --bg2: #111122;
+  --bg3: #161630;
+  --sidebar: #131326;
+  --card: #17172e;
+  --card2: #1c1c38;
+  --card-teal: #0e2835;
+  --border: #252545;
+  --border2: #353560;
+  --purple: #7c3aed;
+  --purple2: #9333ea;
+  --purpleL: #a855f7;
+  --yellow: #f59e0b;
+  --yellow2: #fbbf24;
+  --green: #10b981;
+  --red: #ef4444;
+  --teal: #0d9488;
+  --text: #f0f0ff;
+  --text2: #8888b0;
+  --text3: #505075;
+  --font: 'Inter', sans-serif;
+  --radius: 0.5rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+@keyframes logoPulse {
+  from { transform: scale(0.9); filter: brightness(0.6); }
+  to { transform: scale(1.1); filter: brightness(1.4) drop-shadow(0 0 14px #7c3aed); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes pring {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.4; }
+}
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-18px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes countUp {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE UTILITIES ===== */
+
+/* Tablet ≤1100px */
+@media (max-width: 1100px) {
+  .resp-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  .resp-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+  .page-wrap { padding: 32px 36px 48px !important; }
+  .home-sec { padding-left: 40px !important; padding-right: 40px !important; }
+  .home-hero { padding-left: 40px !important; padding-right: 40px !important; }
+}
+
+/* Mobile ≤768px */
+@media (max-width: 768px) {
+  /* Page wrapper padding */
+  .page-wrap { padding: 20px 16px 40px !important; }
+
+  /* Grid systems */
+  .resp-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  .resp-grid-3 { grid-template-columns: 1fr !important; }
+  .resp-grid-2 { grid-template-columns: 1fr !important; }
+  .resp-main-side { grid-template-columns: 1fr !important; }
+  .resp-sidebar-layout { grid-template-columns: 1fr !important; }
+  .resp-side-layout { grid-template-columns: 1fr !important; }
+
+  /* Home hero section */
+  .home-hero {
+    padding: 32px 16px 28px !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Shrink hero h1 on mobile */
+  .home-hero h1 { font-size: 36px !important; letter-spacing: -1px !important; }
+  .home-hero h1 span:last-child { font-size: 28px !important; }
+
+  /* Hero graphic: visible but compact */
+  .home-hero-graphic {
+    height: 200px !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+
+  /* Home sections padding */
+  .home-sec { padding: 32px 16px !important; }
+
+  /* Home footer grid */
+  .home-footer { grid-template-columns: 1fr !important; gap: 24px !important; }
+
+  /* Partner CTA */
+  .home-partner-cta { flex-direction: column !important; padding: 24px 18px !important; gap: 20px !important; }
+
+  /* Leaderboard + VIP scrollable tables */
+  .lb-table-wrap { overflow-x: auto !important; }
+  .vip-feat-wrap { overflow-x: auto !important; }
+
+  /* Dashboard stats: 2 columns on mobile */
+  .resp-grid-4-dash { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Spin wheel center on mobile */
+  .spin-layout { grid-template-columns: 1fr !important; }
+
+  /* Form grids collapse to 1 col */
+  .resp-form-grid { grid-template-columns: 1fr !important; }
+
+  /* Settings max-width full on mobile */
+  .settings-wrap { max-width: 100% !important; padding: 20px 16px 40px !important; }
+
+  /* Marketplace controls wrap better */
+  .marketplace-controls { flex-direction: column !important; align-items: stretch !important; }
+  .marketplace-controls > * { max-width: 100% !important; }
+}
+
+/* Small mobile ≤480px */
+@media (max-width: 480px) {
+  .resp-grid-4 { grid-template-columns: 1fr !important; }
+  .resp-grid-4-dash { grid-template-columns: 1fr !important; }
+  .resp-grid-3 { grid-template-columns: 1fr !important; }
+  .home-hero h1 { font-size: 30px !important; }
+  .home-hero h1 span:last-child { font-size: 24px !important; }
+  .page-wrap { padding: 16px 12px 32px !important; }
+  .home-sec { padding: 24px 12px !important; }
+  .home-hero { padding: 24px 12px 20px !important; }
+}
